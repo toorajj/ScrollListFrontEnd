@@ -9,7 +9,7 @@ import useStyles from './styles';
 
 const Post =({ post }) => {
     const classes = useStyles();
-    console.log(post.selectedFile);
+  
     return(
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title}/>
