@@ -35,7 +35,7 @@ const Form =({ currentId, setCurrentId}) => {
     return(
         <Paper className= {classes.paper}>
             <form autoComplete="off" noValidate className={ `${classes.root} ${classes.form}` } onSubmit={handleSubmit}>
-                <Typography variant="h6">Adding an Item</Typography>
+                <Typography variant="h6">{currentId ? 'Edit' : 'Add' } an Item</Typography>
                 <TextField 
                     name="creator" 
                     variant="outlined" 
@@ -76,7 +76,7 @@ const Form =({ currentId, setCurrentId}) => {
                     />
       
                 </div>
-                <Button className={classes.buttonSubmit} variant="contained" color="secondary" size="medium" type="submit" fullWidth>Add to List</Button>
+                <Button className={classes.buttonSubmit} variant="contained" color="secondary" size="medium" type="submit" fullWidth>{currentId ? 'Edit Item' : 'Add item' }</Button>
                 <Button variant="contained" color="primary" size="small" onClick={clear} fullWidth >Clear</Button>
             </form>
 
