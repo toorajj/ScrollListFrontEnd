@@ -30,12 +30,13 @@ const Form =({ currentId, setCurrentId}) => {
     };
 
     const clear = () => {
-
+        setCurrentId(null);
+        setPostData({ creator: '', title:'', message:'', tags:'', selectedFile:''});
     }
     return(
         <Paper className= {classes.paper}>
             <form autoComplete="off" noValidate className={ `${classes.root} ${classes.form}` } onSubmit={handleSubmit}>
-                <Typography variant="h6">{currentId ? 'Edit' : 'Add' } an Item</Typography>
+                <Typography variant="h6">{currentId ? 'Edit' : 'Post' } an Item</Typography>
                 <TextField 
                     name="creator" 
                     variant="outlined" 
@@ -76,7 +77,7 @@ const Form =({ currentId, setCurrentId}) => {
                     />
       
                 </div>
-                <Button className={classes.buttonSubmit} variant="contained" color="secondary" size="medium" type="submit" fullWidth>{currentId ? 'Edit Item' : 'Add item' }</Button>
+                <Button className={classes.buttonSubmit} variant="contained" color="secondary" size="medium" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="primary" size="small" onClick={clear} fullWidth >Clear</Button>
             </form>
 
