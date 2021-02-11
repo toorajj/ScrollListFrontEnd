@@ -6,7 +6,7 @@ import Input from './Input'
 
 const Auth = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const isSigendUp = true;
+    const isSigendUp = false;
     
     const handleSubmit = () => {
 
@@ -39,6 +39,9 @@ const Auth = () => {
                         <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
                         { isSigendUp && <Input name="confirmPassword" label="Repeat Passwrod" handleChange={handleChange} type="password" />}
                     </Grid>
+                    <Button type="submit" fullWidth variant="contained" color="primary" >
+                        {isSigendUp ? 'Sign Up' : 'Sign In'}    
+                    </Button>
                 </form>
 
             </Paper>
