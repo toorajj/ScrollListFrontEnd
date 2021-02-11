@@ -1,20 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 import Input from './Input'
 
-const handleSubmit = () => {
-
-};
-
-const handleChange = () => {
-
-};
-
 const Auth = () => {
-    const state = null;
+    const [showPassword, setShowPassword] = useState(false);
     const isSigendUp = true;
+    
+    const handleSubmit = () => {
+
+    };
+
+    const handleChange = () => {
+
+    };
+    
+    const handleShowPassword = () => setShowPassword((prevShowPasword) => !prevShowPasword);
+    
+    
+    
     return (
         <Container maxwith="xs">
             <Paper elevation={3}>
@@ -24,15 +29,15 @@ const Auth = () => {
                 <Typography variant="h5">{isSigendUp ? 'Sign Up' : 'Sign in'}</Typography>
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
-                        {
-                            isSigendUp && (
-                                <>
-                                <Input name="First name" label="First Name" handleChange={handleChange} autoFocus xs={6} />
-                                <Input name="First name" label="First Name" handleChange={handleChange} autoFocus xs={6} />
-                                
-                                </>
-                            )
-                        }
+                        { isSigendUp && (
+                            <>
+                                <Input name="First name" label="First Name" handleChange={handleChange} autoFocus half />
+                                <Input name="First name" label="First Name" handleChange={handleChange} xs={6} />
+                            </>
+                        )}
+                        <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
+                        <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
+                        { isSigendUp && <Input name="confirmPassword" label="Repeat Passwrod" handleChange={handleChange} type="password" />}
                     </Grid>
                 </form>
 
