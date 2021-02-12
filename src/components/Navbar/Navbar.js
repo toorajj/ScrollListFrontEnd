@@ -15,16 +15,16 @@ const Navbar = () => {
     const logout = () => {
       dispatch({ type: 'LOGOUT' });
 
-      history.push('/');
+      history.push('/auth');
       setUser(null);
     }
 
-    useEffect(() => {
-      const token = user?.token;
+    // useEffect(() => {
+    //   const token = user?.token;
 
-      // JWT 
-      setUser(JSON.parse(localStorage.getItem('profile')))
-    }, []);
+    //   // JWT 
+    //   setUser(JSON.parse(localStorage.getItem('profile')))
+    // }, []);
 
     console.log(user);
     return (
@@ -34,14 +34,14 @@ const Navbar = () => {
         <img className={ classes.image } src={image} alt="items" height="60" />
       
       <Toolbar>
-        {user ? (
+        {user?.result ? (
           <div>
             <Avatar alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
             <Typography variant="h5">{user?.result.name}</Typography> 
-            <Button variant="contained" color="socondary" onClick={logout}>Logout</Button>
+            <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
           </div>  
         ):( 
-            <Button component={Link} to="/auth" variant="contained" color="primary">Signin</Button>
+            <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
         )}
       </Toolbar>
       </AppBar>
