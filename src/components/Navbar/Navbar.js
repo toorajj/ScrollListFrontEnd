@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core'
-import { Link, useHistory} from 'react-router-dom';
+import { Link, useHistory, useLocation} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import image from '../../images/scrollList.png'
@@ -11,6 +11,7 @@ const Navbar = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch();
     const history = useHistory();
+    const location = useLocation();
 
     const logout = () => {
       dispatch({ type: 'LOGOUT' });
@@ -19,12 +20,12 @@ const Navbar = () => {
       setUser(null);
     }
 
-    // useEffect(() => {
-    //   const token = user?.token;
+    useEffect(() => {
+      const token = user?.token;
 
-    //   // JWT 
-    //   setUser(JSON.parse(localStorage.getItem('profile')))
-    // }, []);
+      // JWT 
+      setUser(JSON.parse(localStorage.getItem('profile')))
+    }, [location]);
 
     console.log(user);
     return (
