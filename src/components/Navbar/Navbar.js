@@ -9,6 +9,13 @@ const Navbar = () => {
     const classes = useStyles();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
+    useEffect(() => {
+      const token = user?.token;
+
+      // JWT 
+      setUser(JSON.parse(localStorage.getItem('profile')))
+    }, []);
+
     console.log(user);
     return (
       
@@ -18,10 +25,9 @@ const Navbar = () => {
       
       <Toolbar>
         {user ? (
-            <Avatar>
+            <Avatar alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}
 
             </Avatar>
-
         ):( 
             <Button component={Link} to="/auth" variant="contained" color="primary">Signin</Button>
         )}
