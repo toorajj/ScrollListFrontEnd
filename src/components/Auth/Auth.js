@@ -23,7 +23,7 @@ const Auth = () => {
     const googleSuccess = async (res) => {
         const result = res?.profileObj;
         const token = res?.tokenId;
-
+    
         try {
             dispatch({ type: 'AUTH', data: {result, token }});
             
@@ -31,7 +31,8 @@ const Auth = () => {
             console.log(error);
         }
     }
-    const googleFailure = () => {
+    const googleFailure = (error) => {
+        console.log(error);
         console.log('Google sign in failed')
     }
     
