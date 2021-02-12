@@ -45,8 +45,11 @@ const Auth = () => {
                         <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
                         { isSigendUp && <Input name="confirmPassword" label="Repeat Passwrod" handleChange={handleChange} type="password" />}
                     </Grid>
+                    <Button type="submit" fullWidth variant="contained" color="primary" >
+                        {isSigendUp ? 'Sign Up' : 'Sign In'}    
+                    </Button>
                     <GoogleLogin
-                        clientId="GOOGLE ID"
+                        clientId="456151989560-5trkj9r78s54i8iaj2k7br3dtcshmp4i.apps.googleusercontent.com"
                         render={(renderProps) => (
                             <Button 
                             color="secondary" 
@@ -59,9 +62,6 @@ const Auth = () => {
                         onFailure={googleFailure}
                         cookiePolicy="single_host_origin"
                     />
-                    <Button type="submit" fullWidth variant="contained" color="primary" >
-                        {isSigendUp ? 'Sign Up' : 'Sign In'}    
-                    </Button>
                 </form>
 
             </Paper>
