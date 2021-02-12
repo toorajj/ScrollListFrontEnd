@@ -31,9 +31,16 @@ const Auth = () => {
             console.log(error);
         }
     }
+
     const googleFailure = (error) => {
         console.log(error);
         console.log('Google sign in failed')
+    }
+
+    const switchMode = () => {
+        setIsSignedUp((prevIsSignedUp) => !prevIsSignedUp);
+        handleShowPassword(false);
+
     }
     
     return (
@@ -48,7 +55,7 @@ const Auth = () => {
                         { isSignedUp && (
                             <>
                                 <Input name="First name" label="First Name" handleChange={handleChange} autoFocus half />
-                                <Input name="Last name" label="Last Name" handleChange={handleChange} xs={6} />
+                                <Input name="Last name" label="Last Name" handleChange={handleChange} half />
                             </>
                         )}
                         <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
@@ -58,6 +65,13 @@ const Auth = () => {
                     <Button type="submit" fullWidth variant="contained" color="primary" >
                         {isSignedUp ? 'Sign Up' : 'Sign In'}    
                     </Button>
+                    <Grid container justify="flex-end">
+                        <Grid item>
+                            <Button onClick={switchMode}>
+                                { isSignedUp ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
+                            </Button>
+                        </Grid>
+                    </Grid>
                     <GoogleLogin
                         clientId="456151989560-5trkj9r78s54i8iaj2k7br3dtcshmp4i.apps.googleusercontent.com"
                         render={(renderProps) => (
